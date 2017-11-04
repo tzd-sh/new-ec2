@@ -1,0 +1,65 @@
+#!/bin/bash
+#################################################################################
+## Pre-Requisites: Your shell should already have AWS CLI installed and
+## configured (aws config) with access keys already saved into ~/.aws/credentials
+#################################################################################
+## Begin User-Configurable Variables - change as necessary or as needed
+
+VAGRANT_DIR=/path/to/your/vagrant/directory
+
+## 'ami-8c1be5f6' is default Amazon Linux AMI for US East (N. Virginia); change as you wish
+AMI="ami-8c1be5f6"
+
+## Amazon Linux AMI has 'ec2-user' as the login name; Ubuntu AMI uses 'ubuntu' as the login name
+SSH_USER="ec2-user"
+
+INSTANCE_TYPE="t2.micro"
+SECURITY_GROUPS="name_of_your_security_group_with_open_ssh_port"
+
+KEYPAIR="aws_name_of_keypair"
+SSH_PRIVATE_KEY="/path/to/your/.ssh/private_key.pem"
+
+## End User-Configurable Variables
+##################################
+
+if [ n$1 == "n" ]; then
+  echo
+  echo "Error!"
+  echo "  Syntax: `basename $0` instance_name"
+  echo
+  exit 1
+fi
+NEW_DIR=$1
+
+cd $VAGRANT_DIR
+if [ -d $NEW_DIR ]; then
+  echo
+  echo "Error: $VAGRANT_DIR/$NEW_DIR already exists!"
+  echo
+  exit 1
+fi
+mkdir $NEW_DIR
+cd $NEW_DIR
+
+cat <<EOF > Vagrantfile
+Vagrant.configure("2") do |config|
+  config.vm.box = "dummy"
+
+  config.vm.provider :aws do |aws, override|
+    aws.keypair_name = "$KEYPAIR"
+
+    aws.ami = "$AMI"
+    aws.instance_type = "$INSTANCE_TYPE"
+    aws.security_groups = "$SECURITY_GROUPS"
+
+    override.nfs.functional = false
+    override.ssh.username = "$SSH_USER"
+    override.ssh.private_key_path = "$SSH_PRIVATE_KEY"
+  end
+end
+EOF
+
+echo
+echo "Created new EC2 Instance in $VAGRANT_DIR/$NEW_DIR"
+echo
+exit 0
