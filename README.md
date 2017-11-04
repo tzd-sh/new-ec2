@@ -3,7 +3,7 @@ Vagrant - Create a new AWS EC2 Instance (very quickly)
 
 Pre-Requisites:
 
-1. You should already have Vagrant installed in your environment
+1. You should already have Vagrant and Python installed in your environment
 
 2. You should already have vagrant-aws plugin and a dummy box installed as per https://github.com/mitchellh/vagrant-aws/blob/master/README.md
 ```
@@ -11,9 +11,11 @@ $ vagrant plugin install vagrant-aws
 $ vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
 ```
 
-3. Your shell should already have AWS CLI installed and configured (aws config) with access keys already saved into ~/.aws/credentials
-
-
+3. Your shell should already have AWS CLI installed and configured with access keys already saved into ~/.aws/credentials
+```
+$ pip install awscli
+$ aws configure
+```
 
 
 ## Begin User-Configurable Variables - change as necessary or as needed
