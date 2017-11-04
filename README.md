@@ -1,5 +1,7 @@
 # new-ec2
-Vagrant - Create a new AWS EC2 Instance (very quickly)
+NEW-EC2: Vagrant create a new AWS EC2 Instance (very quickly)
+
+Written by: Zheng-Da Tan
 
 Pre-Requisites:
 
