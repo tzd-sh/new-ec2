@@ -35,20 +35,14 @@ This is the AWS instance type that the EC2 instance will be started as:
 ```
 INSTANCE_TYPE="t2.micro"
 ```
-
-
 You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use this Group Name (not Group ID) below:
 ```
 SECURITY_GROUPS="name_of_your_security_group_with_open_ssh_port"
 ```
-
-
 This is the "Key pair name" in AWS EC2 Console:
 ```
 KEYPAIR="aws_name_of_keypair"
 ```
-
-
 This is the path to the private key that you have downloaded when you initially created the AWS Key Pair:
 ```
 SSH_PRIVATE_KEY="/path/to/your/.ssh/private_key.pem"
