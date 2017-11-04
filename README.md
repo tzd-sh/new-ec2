@@ -23,20 +23,14 @@ This is the directory where you want your vagrant instances to be created under:
 ```
 VAGRANT_DIR=/path/to/your/vagrant/directory
 ```
-
-
 'ami-8c1be5f6' is default Amazon Linux AMI for US East (N. Virginia); change as you wish:
 ```
 AMI="ami-8c1be5f6"
 ```
-
-
 Amazon Linux AMI has 'ec2-user' as the login name; Ubuntu AMI uses 'ubuntu' as the login name:
 ```
 SSH_USER="ec2-user"
 ```
-
-
 This is the AWS instance type that the EC2 instance will be started as:
 ```
 INSTANCE_TYPE="t2.micro"
