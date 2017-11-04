@@ -3,6 +3,8 @@ NEW-EC2: Vagrant create a new AWS EC2 Instance (very quickly)
 
 Written by: Zheng-Da Tan
 
+Acknowledgement: This is pretty much an automation of the information provided from the official Vagrant-AWS plugin at https://github.com/mitchellh/vagrant-aws
+
 Pre-Requisites:
 
 1. You should already have Vagrant and Python installed in your environment
