@@ -17,25 +17,39 @@ $ pip install awscli
 $ aws configure
 ```
 
-These are the variables you should edit in the script before running
+These are the variables you should edit in the script before running:
 
-## This is the directory where you want your vagrant instances to be created under
+This is the directory where you want your vagrant instances to be created under
+```
 VAGRANT_DIR=/path/to/your/vagrant/directory
+```
 
-## 'ami-8c1be5f6' is default Amazon Linux AMI for US East (N. Virginia); change as you wish
+'ami-8c1be5f6' is default Amazon Linux AMI for US East (N. Virginia); change as you wish
+```
 AMI="ami-8c1be5f6"
+```
 
-## Amazon Linux AMI has 'ec2-user' as the login name; Ubuntu AMI uses 'ubuntu' as the login name
+Amazon Linux AMI has 'ec2-user' as the login name; Ubuntu AMI uses 'ubuntu' as the login name
+```
 SSH_USER="ec2-user"
+```
 
-## This is the AWS instance type that the EC2 instance will be started as
+This is the AWS instance type that the EC2 instance will be started as
+```
 INSTANCE_TYPE="t2.micro"
+```
 
-## You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use this Group Name (not Group ID) below 
+You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use this Group Name (not Group ID) below 
+```
 SECURITY_GROUPS="name_of_your_security_group_with_open_ssh_port"
+```
 
-## This is the "Key pair name" in AWS EC2 Console
+This is the "Key pair name" in AWS EC2 Console
+```
 KEYPAIR="aws_name_of_keypair"
+```
 
-## This is the path to the private key that you have downloaded when you initially created the AWS Key Pair 
+This is the path to the private key that you have downloaded when you initially created the AWS Key Pair 
+```
 SSH_PRIVATE_KEY="/path/to/your/.ssh/private_key.pem"
+```
