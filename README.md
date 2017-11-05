@@ -39,9 +39,13 @@ This is the AWS instance type that the EC2 instance will be started as:
 ```
 INSTANCE_TYPE="t2.micro"
 ```
-You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use this Group Name (not Group ID) below:
+You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use the Group ID below:
 ```
-SECURITY_GROUPS="name_of_your_security_group_with_open_ssh_port"
+SECURITY_GROUP_ID="sg-XXXXXXXX"
+```
+This is the Subnet ID of your VPC:
+```
+SUBNET_ID="subnet-XXXXXXXX"
 ```
 This is the "Key pair name" in AWS EC2 Console:
 ```
