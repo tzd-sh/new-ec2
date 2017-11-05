@@ -17,8 +17,11 @@ SSH_USER="ec2-user"
 ## This is the AWS instance type that the EC2 instance will be started as
 INSTANCE_TYPE="t2.micro"
 
-## You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use this Group Name (not Group ID) below 
-SECURITY_GROUPS="name_of_your_security_group_with_open_ssh_port"
+## You should create a Security Group in AWS Console with Port 22 and any additional ports you require open to access from your computer, and use the Group ID below 
+SECURITY_GROUP_ID="sg-XXXXXXXX"
+
+## This is the Subnet ID of your VPC
+SUBNET_ID="subnet-XXXXXXXX"
 
 ## This is the "Key pair name" in AWS EC2 Console
 KEYPAIR="aws_name_of_keypair"
@@ -51,14 +54,13 @@ cd $NEW_DIR
 cat <<EOF > Vagrantfile
 Vagrant.configure("2") do |config|
   config.vm.box = "dummy"
-
   config.vm.provider :aws do |aws, override|
     aws.keypair_name = "$KEYPAIR"
-
     aws.ami = "$AMI"
     aws.instance_type = "$INSTANCE_TYPE"
-    aws.security_groups = "$SECURITY_GROUPS"
-
+    aws.security_groups = "$SECURITY_GROUP_ID"
+    aws.subnet_id = "$SUBNET_ID"
+    aws.associate_public_ip = true
     override.nfs.functional = false
     override.ssh.username = "$SSH_USER"
     override.ssh.private_key_path = "$SSH_PRIVATE_KEY"
